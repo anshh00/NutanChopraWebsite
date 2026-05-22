@@ -117,7 +117,7 @@ html {
 
 body {
   -webkit-text-size-adjust: none;
-  background: #363657;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 140, 168, 0.08), transparent 24rem), #363657;
   color: #ffffff;
   font-family: "Quicksand", sans-serif;
   line-height: 1;
@@ -172,7 +172,7 @@ a:hover {
 
 .inner {
   max-width: 100%;
-  padding: 2.5rem 2rem;
+  padding: 2.75rem 2rem;
   position: relative;
   width: 48rem;
   z-index: 1;
@@ -204,6 +204,10 @@ a:hover {
   display: inline-block;
   line-height: 0;
   max-width: 100%;
+  padding: 0.18rem;
+  border: 1px solid rgba(255, 140, 168, 0.58);
+  border-radius: 100%;
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.18);
   width: 8rem;
 }
 
@@ -278,13 +282,15 @@ p {
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  transition: border-color 0.25s ease, color 0.25s ease;
+  transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease, background-color 0.25s ease;
 }
 
 .button-nav a:hover,
 .button-nav a.active {
+  background: rgba(255, 140, 168, 0.035);
   border-color: #ff8ca8;
   color: #ff8ca8;
+  transform: translateY(-0.08rem);
 }
 
 .gallery {
@@ -313,14 +319,56 @@ p {
 }
 
 .gallery-item:hover {
-  opacity: 0.78;
-  transform: translateY(-0.12rem);
+  opacity: 0.9;
+  transform: translateY(-0.16rem);
 }
 
 .gallery-item img {
   height: 100%;
   object-fit: cover;
+  transition: transform 0.4s ease;
   width: 100%;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.04);
+}
+
+.social-links {
+  align-items: center;
+  display: flex;
+  gap: 0.85rem;
+  justify-content: center;
+}
+
+.social-links a {
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.149);
+  border-radius: 100%;
+  display: inline-flex;
+  height: 3.125rem;
+  justify-content: center;
+  text-decoration: none;
+  transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease, background-color 0.25s ease;
+  width: 3.125rem;
+}
+
+.social-links a:hover,
+.social-links a:focus-visible {
+  background: rgba(255, 140, 168, 0.035);
+  border-color: #ff8ca8;
+  color: #ff8ca8;
+  transform: translateY(-0.08rem);
+}
+
+.social-links svg {
+  fill: none;
+  height: 1.15rem;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+  width: 1.15rem;
 }
 
 .contact-form {
@@ -364,8 +412,15 @@ p {
 }
 
 .contact-form button:hover {
+  background: rgba(255, 140, 168, 0.035);
   border-color: #ff8ca8;
   color: #ff8ca8;
+  transform: translateY(-0.08rem);
+}
+
+.copyright {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.75em;
 }
 
 .lightbox {
@@ -373,7 +428,7 @@ p {
   background: rgba(10, 10, 10, 0.85);
   display: grid;
   gap: 0;
-  grid-template-columns: min-content minmax(0, 1fr) min-content;
+  grid-template-columns: 5rem minmax(0, 1fr) 5rem;
   grid-template-rows: minmax(0, 1fr) auto;
   height: 100%;
   left: 0;
@@ -400,16 +455,21 @@ p {
   flex-direction: column;
   gap: 1rem;
   justify-content: center;
+  margin: 0 auto;
   min-width: 0;
+  width: min(48rem, calc(100vw - 10rem));
 }
 
 .lightbox img {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 1em 3em rgba(0, 0, 0, 0.35);
-  height: min(78vh, 40rem);
+  height: auto;
   margin: 0 auto;
+  max-height: 68vh;
   max-width: 100%;
   object-fit: contain;
-  width: 100%;
+  width: auto;
 }
 
 .lightbox figcaption {
@@ -442,18 +502,22 @@ p {
 }
 
 .lightbox-close {
+  background-color: rgba(255, 255, 255, 0.06);
   background-image: linear-gradient(45deg, transparent 47%, #ffffff 49%, #ffffff 51%, transparent 53%), linear-gradient(-45deg, transparent 47%, #ffffff 49%, #ffffff 51%, transparent 53%);
-  height: 6rem;
+  background-size: 2.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 100%;
+  height: 3.25rem;
   position: absolute;
-  right: 0;
-  top: 0;
-  width: 6rem;
+  right: 1.25rem;
+  top: 1.25rem;
+  width: 3.25rem;
 }
 
 .lightbox-prev,
 .lightbox-next {
-  height: 6rem;
-  width: 8rem;
+  height: 5rem;
+  width: 5rem;
 }
 
 .lightbox-prev {
@@ -522,13 +586,19 @@ p {
     padding: 4rem 1rem 1.5rem;
   }
 
+  .lightbox figure {
+    width: 100%;
+  }
+
   .lightbox-prev,
   .lightbox-next {
     display: none;
   }
 
   .lightbox img {
-    height: 72vh;
+    height: auto;
+    max-height: 68vh;
+    max-width: 100%;
   }
 }
 
