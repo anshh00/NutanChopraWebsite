@@ -6,7 +6,7 @@ const closeButton = lightbox.querySelector(".lightbox-close");
 const prevButton = lightbox.querySelector(".lightbox-prev");
 const nextButton = lightbox.querySelector(".lightbox-next");
 let currentIndex = 0;
-const routes = ["home", "work", "about", "contact"];
+const routes = ["home", "work", "social-goss", "about", "contact"];
 
 function currentRoute() {
   const route = window.location.hash.replace("#", "").toLowerCase();
@@ -22,7 +22,11 @@ function showSection(route) {
     link.classList.toggle("active", link.dataset.nav === route);
   });
 
-  document.title = route === "home" ? "Nutan Chopra" : `Nutan Chopra - ${route[0].toUpperCase()}${route.slice(1)}`;
+  const pageTitle = route
+    .split("-")
+    .map((word) => `${word[0].toUpperCase()}${word.slice(1)}`)
+    .join(" ");
+  document.title = route === "home" ? "Nutan Chopra" : `Nutan Chopra - ${pageTitle}`;
   window.scrollTo({ top: 0, left: 0, behavior: "instant" });
 }
 
