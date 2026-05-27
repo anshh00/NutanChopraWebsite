@@ -5,6 +5,8 @@ const lightboxCaption = lightbox.querySelector("figcaption");
 const closeButton = lightbox.querySelector(".lightbox-close");
 const prevButton = lightbox.querySelector(".lightbox-prev");
 const nextButton = lightbox.querySelector(".lightbox-next");
+const contactForm = document.querySelector(".contact-form");
+const formStatus = document.querySelector(".form-status");
 let currentIndex = 0;
 const routes = ["home", "work", "social-goss", "about", "contact"];
 
@@ -85,3 +87,33 @@ document.addEventListener("keydown", (event) => {
 
 window.addEventListener("hashchange", () => showSection(currentRoute()));
 showSection(currentRoute());
+
+if (contactForm && formStatus) {
+  contactForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const formData = new FormData(contactForm);
+
+    formStatus.textContent = "Sending...";
+    submitButton.disabled = true;
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
+
+      if (!response.ok) {
+        throw new Error("Form submission failed");
+      }
+
+      contactForm.reset();
+      formStatus.textContent = "Thank you. Your message has been sent.";
+    } catch (error) {
+      formStatus.textContent = "Sorry, the message could not be sent. Please try again.";
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+}

@@ -464,6 +464,18 @@ p {
   transform: translateY(-0.08rem);
 }
 
+.contact-form button:disabled {
+  cursor: progress;
+  opacity: 0.55;
+  transform: none;
+}
+
+.form-status {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.75em;
+  min-height: 1.5em;
+}
+
 .copyright {
   color: rgba(255, 255, 255, 0.72);
   font-size: 0.75em;

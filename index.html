@@ -157,13 +157,14 @@
             </a>
           </div>
 
-          <form class="contact-form" action="mailto:nutan.chopra@gmail.com" method="post" enctype="text/plain">
+          <form class="contact-form" action="https://formspree.io/f/xlgvadkn" method="POST">
             <div class="field-row">
-              <input type="text" name="name" placeholder="Name" aria-label="Name">
-              <input type="email" name="email" placeholder="Email" aria-label="Email">
+              <input type="text" name="name" placeholder="Name" aria-label="Name" required>
+              <input type="email" name="email" placeholder="Email" aria-label="Email" required>
             </div>
-            <textarea name="message" placeholder="Message" aria-label="Message"></textarea>
+            <textarea name="message" placeholder="Message" aria-label="Message" required></textarea>
             <button type="submit">Send</button>
+            <p class="form-status" aria-live="polite"></p>
           </form>
           <div class="divider"></div>
           <p class="copyright">&copy; 2026 Nutan Chopra. All rights reserved.</p>
